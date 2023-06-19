@@ -1,0 +1,38 @@
+FROM python:3.9
+WORKDIR /app
+COPY requirements.txt .
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+CMD ["python", "app.py"]
+++++
+
+>docker build -t flask-api .
+Replace "flask-api" with the desired name for your Docker image.
+
+Once the image is built, you can run a container based on that image using the following command:
+>docker run -p 5000:5000 flask-api
+
+ex:
+project/
+├── Dockerfile
+└── app/
+    ├── app.py
+    └── other_files.py
+
+
+COPY app /app
+
+FROM python:3.9
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app /app
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
